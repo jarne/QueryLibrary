@@ -1,0 +1,28 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.1-browsers
+    steps:
+      # Checkout branch
+      - checkout
+
+      # Install Composer dependencies
+      - restore_cache:
+          key: composer-{{ checksum "composer.json" }}
+      - run: composer install
+      - save_cache:
+          key: composer-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+
+      # Setup PocketMine-MP
+      - run: curl https://raw.githubusercontent.com/pmmp/php-build-scripts/master/installer.sh | bash
+
+      # Start PocketMine-MP
+      - run: ./start.sh --no-wizard &
+      - run: sleep 5
+
+      # Run tests with PHPUnit
+      - run: php vendor/bin/phpunit

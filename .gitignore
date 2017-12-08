@@ -1,0 +1,5 @@
+# IDE project folder
+/.idea
+
+# Dependencies
+/vendor
