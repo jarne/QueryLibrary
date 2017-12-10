@@ -4,7 +4,7 @@ A library to fetch the query information of Minecraft: Bedrock Edition servers
 [![CircleCI](https://circleci.com/gh/jarne/QueryLibrary.svg?style=svg)](https://circleci.com/gh/jarne/QueryLibrary)
 
 ## Install
-You can easily install it with `composer require jarne/QueryLibrary`. If you don't have Composer, you can also clone the respository and use it.
+You can easily install it with `composer require jarne/querylibrary`. If you don't have Composer, you can also clone the respository and use it.
 
 ## Usage
 There is only one function called `fetch` to get the query information of a server. You must enter the IP of the server. If you don't specify the port or the timeout, it'll use the default port 19132 and a timeout of 5 seconds. The data is returned in a `Result`-object which has functions to get each value.
