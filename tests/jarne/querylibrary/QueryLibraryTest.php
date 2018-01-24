@@ -15,7 +15,7 @@ class QueryLibraryTest extends TestCase {
     /**
      * Test if the fetching in general is working
      */
-    public function testFetchingGeneral() {
+    public function testFetchingGeneral(): Result {
         $queryLibrary = new QueryLibrary();
         $fetchedData = $queryLibrary->fetch("127.0.0.1");
 
@@ -31,7 +31,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testIp(Result $fetchedData) {
+    public function testIp(Result $fetchedData): void {
         $this->assertEquals("0.0.0.0", $fetchedData->getIp());
     }
 
@@ -42,7 +42,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testPort(Result $fetchedData) {
+    public function testPort(Result $fetchedData): void {
         $this->assertEquals(19132, $fetchedData->getPort());
     }
 
@@ -53,7 +53,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testGameType(Result $fetchedData) {
+    public function testGameType(Result $fetchedData): void {
         $this->assertEquals("SMP", $fetchedData->getGameType());
     }
 
@@ -64,7 +64,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testGameId(Result $fetchedData) {
+    public function testGameId(Result $fetchedData): void {
         $this->assertEquals("MINECRAFTPE", $fetchedData->getGameId());
     }
 
@@ -75,7 +75,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testVersion(Result $fetchedData) {
+    public function testVersion(Result $fetchedData): void {
         $this->assertContains("v", $fetchedData->getVersion());
     }
 
@@ -86,7 +86,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testServerEngine(Result $fetchedData) {
+    public function testServerEngine(Result $fetchedData): void {
         $this->assertContains("PocketMine-MP", $fetchedData->getServerEngine());
     }
 
@@ -97,7 +97,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testWorld(Result $fetchedData) {
+    public function testWorld(Result $fetchedData): void {
         $this->assertEquals("PocketMine-MP Server", $fetchedData->getMotd());
     }
 
@@ -108,7 +108,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testWhitelist(Result $fetchedData) {
+    public function testWhitelist(Result $fetchedData): void {
         $this->assertFalse($fetchedData->isWhitelist());
     }
 
@@ -119,7 +119,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testOnlinePlayers(Result $fetchedData) {
+    public function testOnlinePlayers(Result $fetchedData): void {
         $this->assertEquals(0, $fetchedData->getOnlinePlayers());
     }
 
@@ -130,7 +130,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testMaxPlayers(Result $fetchedData) {
+    public function testMaxPlayers(Result $fetchedData): void {
         $this->assertEquals(20, $fetchedData->getMaxPlayers());
     }
 
@@ -141,7 +141,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testDefaultLevelName(Result $fetchedData) {
+    public function testDefaultLevelName(Result $fetchedData): void {
         $this->assertEquals("world", $fetchedData->getDefaultLevelName());
     }
 
@@ -152,7 +152,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testPlugins(Result $fetchedData) {
+    public function testPlugins(Result $fetchedData): void {
         $this->assertContains("PocketMine-MP", $fetchedData->getPlugins());
     }
 
@@ -163,7 +163,7 @@ class QueryLibraryTest extends TestCase {
      *
      * @depends testFetchingGeneral
      */
-    public function testPlayerNames(Result $fetchedData) {
+    public function testPlayerNames(Result $fetchedData): void {
         $this->assertEquals(0, count($fetchedData->getPlayerNames()));
     }
 }

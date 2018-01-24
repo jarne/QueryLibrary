@@ -65,7 +65,7 @@ class Result {
     /**
      * @param bool $status
      */
-    public function setStatus(bool $status) {
+    public function setStatus(bool $status): void {
         $this->status = $status;
     }
 
@@ -79,7 +79,7 @@ class Result {
     /**
      * @param string $ip
      */
-    public function setIp(string $ip) {
+    public function setIp(string $ip): void {
         $this->ip = $ip;
     }
 
@@ -93,7 +93,7 @@ class Result {
     /**
      * @param int $port
      */
-    public function setPort(int $port) {
+    public function setPort(int $port): void {
         $this->port = $port;
     }
 
@@ -107,7 +107,7 @@ class Result {
     /**
      * @param string $gameType
      */
-    public function setGameType(string $gameType) {
+    public function setGameType(string $gameType): void {
         $this->gameType = $gameType;
     }
 
@@ -121,7 +121,7 @@ class Result {
     /**
      * @param string $gameId
      */
-    public function setGameId(string $gameId) {
+    public function setGameId(string $gameId): void {
         $this->gameId = $gameId;
     }
 
@@ -135,7 +135,7 @@ class Result {
     /**
      * @param string $version
      */
-    public function setVersion(string $version) {
+    public function setVersion(string $version): void {
         $this->version = $version;
     }
 
@@ -149,7 +149,7 @@ class Result {
     /**
      * @param string $serverEngine
      */
-    public function setServerEngine(string $serverEngine) {
+    public function setServerEngine(string $serverEngine): void {
         $this->serverEngine = $serverEngine;
     }
 
@@ -163,7 +163,7 @@ class Result {
     /**
      * @param string $motd
      */
-    public function setMotd(string $motd) {
+    public function setMotd(string $motd): void {
         $this->motd = $motd;
     }
 
@@ -177,7 +177,7 @@ class Result {
     /**
      * @param bool $whitelist
      */
-    public function setWhitelist(bool $whitelist) {
+    public function setWhitelist(bool $whitelist): void {
         $this->whitelist = $whitelist;
     }
 
@@ -191,7 +191,7 @@ class Result {
     /**
      * @param int $onlinePlayers
      */
-    public function setOnlinePlayers(int $onlinePlayers) {
+    public function setOnlinePlayers(int $onlinePlayers): void {
         $this->onlinePlayers = $onlinePlayers;
     }
 
@@ -205,7 +205,7 @@ class Result {
     /**
      * @param int $maxPlayers
      */
-    public function setMaxPlayers(int $maxPlayers) {
+    public function setMaxPlayers(int $maxPlayers): void {
         $this->maxPlayers = $maxPlayers;
     }
 
@@ -219,7 +219,7 @@ class Result {
     /**
      * @param string $defaultLevelName
      */
-    public function setDefaultLevelName(string $defaultLevelName) {
+    public function setDefaultLevelName(string $defaultLevelName): void {
         $this->defaultLevelName = $defaultLevelName;
     }
 
@@ -233,7 +233,7 @@ class Result {
     /**
      * @param string $plugins
      */
-    public function setPlugins(string $plugins) {
+    public function setPlugins(string $plugins): void {
         $this->plugins = $plugins;
     }
 
@@ -247,7 +247,7 @@ class Result {
     /**
      * @param array $playerNames
      */
-    public function setPlayerNames(array $playerNames) {
+    public function setPlayerNames(array $playerNames): void {
         $this->playerNames = $playerNames;
     }
 }

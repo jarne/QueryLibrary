@@ -19,7 +19,7 @@ class QueryLibrary {
      * @param int $timeoutSeconds
      * @return Result
      */
-    public function fetch(string $ip, int $port = 19132, int $timeoutSeconds = 5) {
+    public function fetch(string $ip, int $port = 19132, int $timeoutSeconds = 5): Result {
         $result = new Result();
 
         if($socket = fsockopen("udp://" . $ip, $port)) {
