@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/php:7.1-browsers
+      - image: circleci/php:7.2-node-browsers
     steps:
       # Checkout branch
       - checkout
@@ -22,7 +22,7 @@ jobs:
 
       # Start PocketMine-MP
       - run: ./start.sh --no-wizard &
-      - run: sleep 5
+      - run: sleep 20
 
       # Run tests with PHPUnit
       - run: php vendor/bin/phpunit
