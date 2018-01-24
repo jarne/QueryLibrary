@@ -24,10 +24,13 @@ jobs:
           curl https://raw.githubusercontent.com/pmmp/php-build-scripts/master/installer.sh | bash
 
       # Start PocketMine-MP
-      - run: |
-          cd server-running-test
-          ./start.sh --no-wizard &
-      - run: sleep 20
+      - run:
+          name: Run PocketMine-MP in the background
+          command: |
+            cd server-running-test
+            ./start.sh --no-wizard
+          background: true
+      - run: sleep 5
 
       # Run tests with PHPUnit
       - run: php vendor/bin/phpunit
