@@ -142,7 +142,9 @@ class QueryLibraryTest extends TestCase {
      * @depends testFetchingGeneral
      */
     public function testDefaultLevelName(Result $fetchedData): void {
-        $this->assertTrue(($fetchedData->getDefaultLevelName() === "world") OR ($fetchedData->getDefaultLevelName() === "unknown"));
+        $this->assertTrue(
+            ($fetchedData->getDefaultLevelName() === "world") OR ($fetchedData->getDefaultLevelName() === "unknown")
+        );
     }
 
     /**

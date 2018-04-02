@@ -32,19 +32,22 @@ class QueryLibrary {
 
                     if(fwrite($socket, "\xFE\xFD\x00\x10\x20\x30\x40" . $challengeToken . "\xFF\xFF\xFF\x01")) {
                         if($informationResponse = fread($socket, 4096)) {
-                            $informationParts = explode("\0", str_replace("\x01", "", substr($informationResponse, 16)));
+                            $informationParts = explode(
+                                "\0",
+                                str_replace("\x01", "", substr($informationResponse, 16))
+                            );
 
                             $nextIsValue = false;
                             $whatIsNext = "";
 
                             $playerNamesArray = array();
 
-                            for ($i = 0; $i < count($informationParts); $i++) {
+                            for($i = 0; $i < count($informationParts); $i++) {
                                 $currentValue = $informationParts[$i];
 
-                                if (strlen($currentValue) > 0) {
-                                    if ($nextIsValue) {
-                                        switch ($whatIsNext) {
+                                if(strlen($currentValue) > 0) {
+                                    if($nextIsValue) {
+                                        switch($whatIsNext) {
                                             case "hostname":
                                                 $result->setMotd($currentValue);
 
@@ -91,7 +94,7 @@ class QueryLibrary {
                                                 $nextIsValue = false;
                                                 break;
                                             case "whitelist":
-                                                switch ($currentValue) {
+                                                switch($currentValue) {
                                                     case "on":
                                                         $result->setWhitelist(true);
                                                         break;
