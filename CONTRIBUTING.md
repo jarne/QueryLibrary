@@ -2,7 +2,7 @@
 Thanks for contributing to our project 🎉👍!
 
 ## 😉 Code of Conduct
-Everyone parcipating in this project must accept our [Code of Conduct](CODE_OF_CONDUCT.md) which rules the friendly together of all contributors.
+Everyone participating in this project must accept our [Code of Conduct](CODE_OF_CONDUCT.md) which rules the friendly together of all contributors.
 
 ## ❔ Questions
 Please ask questions on [Gitter](https://gitter.im/jarne/QueryLibrary). You will get a faster answer there and don't disturb maintainers and contributors in the issue tracker.

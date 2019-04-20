@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: jarne
- * Date: 07.12.17
- * Time: 19:08
+ * QueryLibrary | result class
  */
 
 namespace jarne\querylibrary\utils;

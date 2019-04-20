@@ -30,7 +30,7 @@
 [• License](#%EF%B8%8F-license)
 
 ## 📦 Install
-The library requires PHP 7.2 or newer in order to work correctly. You can install it with:
+This library requires PHP 7.2 or newer in order to work correctly. You can install it with:
 
 ```
 $ composer require jarne/querylibrary
@@ -70,13 +70,11 @@ echo "The default level name is " . $result->getDefaultLevelName();
 ```
 
 ## 🙋‍ Contribution
-Contributions are always very welcome! It's completly equally if you're a beginner or a more experienced developer.
+Contributions are always very welcome! It's completely equal if you're a beginner or a more experienced developer.
 
 Please read our **[Contribution Guidelines](CONTRIBUTING.md)** before creating an issue or submitting a pull request.
 
-Thanks for your intrest 🎉👍!
+Thanks for your interest 🎉👍!
 
 ## 👨‍⚖️ License
-[![Creative Commons License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)](http://creativecommons.org/licenses/by-sa/4.0/)
-
-[QueryLibrary](https://github.com/jarne/QueryLibrary) by [jarne](https://github.com/jarne) is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/). Permissions beyond the scope of this license may be available on request.
+[MIT](https://github.com/jarne/QueryLibrary/blob/master/LICENSE)
