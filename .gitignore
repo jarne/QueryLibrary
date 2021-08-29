@@ -3,3 +3,6 @@
 
 # Dependencies
 /vendor
+
+# PHPUnit cache
+/.phpunit.result.cache

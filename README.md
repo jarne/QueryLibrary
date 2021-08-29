@@ -16,9 +16,6 @@
     <a href="https://github.com/jarne/QueryLibrary/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/jarne/QueryLibrary.svg" alt="License">
     </a>
-    <a href="https://gitter.im/jarne/QueryLibrary">
-        <img src="https://img.shields.io/gitter/room/jarne/QueryLibrary.svg" alt="Gitter">
-    </a>
 </p>
 
 ##
@@ -52,12 +49,17 @@ There is only one function called `fetch` to get the query information of a serv
  * @param string $ip
  * @param int $port
  * @param int $timeoutSeconds
- * @return Result|false
+ *
+ * @return Result
  */
-public function fetch(string $ip, int $port = 19132, int $timeoutSeconds = 5) {
+public function fetch(
+    string $ip,
+    int $port = 19132,
+    int $timeoutSeconds = 5
+): Result
 ```
 
-For a list of all available get-value-functions, take a look into the [Result.php](https://github.com/jarne/QueryLibrary/blob/master/src/jarne/querylibrary/utils/Result.php)-file.
+For a list of all available get-value-functions, take a look into the [Result.php](https://github.com/jarne/QueryLibrary/blob/master/src/jarne/querylibrary/utils/Result.php) file.
 
 ## ⌨️ Examples
 As an example, we're going to fetch the default level name of a PocketMine-MP server running on the local machine.
