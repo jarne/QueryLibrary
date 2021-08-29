@@ -80,7 +80,7 @@ class QueryLibraryTest extends TestCase
      */
     public function testVersion(Result $fetchedData): void
     {
-        $this->assertContains("v", $fetchedData->getVersion());
+        $this->assertStringContainsString("v", $fetchedData->getVersion());
     }
 
     /**
@@ -92,7 +92,7 @@ class QueryLibraryTest extends TestCase
      */
     public function testServerEngine(Result $fetchedData): void
     {
-        $this->assertContains("PocketMine-MP", $fetchedData->getServerEngine());
+        $this->assertStringContainsString("PocketMine-MP", $fetchedData->getServerEngine());
     }
 
     /**
@@ -167,7 +167,7 @@ class QueryLibraryTest extends TestCase
      */
     public function testPlugins(Result $fetchedData): void
     {
-        $this->assertContains("PocketMine-MP", $fetchedData->getPlugins());
+        $this->assertStringContainsString("PocketMine-MP", $fetchedData->getPlugins());
     }
 
     /**
@@ -179,6 +179,6 @@ class QueryLibraryTest extends TestCase
      */
     public function testPlayerNames(Result $fetchedData): void
     {
-        $this->assertEquals(0, count($fetchedData->getPlayerNames()));
+        $this->assertCount(0, $fetchedData->getPlayerNames());
     }
 }
