@@ -1,36 +1,106 @@
 version: 2
 
 jobs:
-  build:
-    docker:
-      - image: circleci/php:7.4-node
-    steps:
-      # Checkout branch
-      - checkout
+    phpunit:
+        docker:
+            - image: cimg/php:8.1
+        steps:
+            # Checkout branch
+            - checkout
 
-      # Install Composer dependencies
-      - restore_cache:
-          key: composer-{{ checksum "composer.json" }}
-      - run: composer install
-      - save_cache:
-          key: composer-{{ checksum "composer.json" }}
-          paths:
-            - vendor
+            # Manually install PHP extensions
+            - run: |
+                  sudo pecl install xdebug
 
-      # Setup PocketMine-MP
-      - run: |
-          mkdir server-running-test
-          cd server-running-test
-          curl https://raw.githubusercontent.com/pmmp/php-build-scripts/master/installer.sh | bash
+            # Install Composer dependencies
+            - restore_cache:
+                  key: composer-{{ checksum "composer.json" }}
+            - run: composer install
+            - save_cache:
+                  key: composer-{{ checksum "composer.json" }}
+                  paths:
+                      - vendor
 
-      # Start PocketMine-MP
-      - run:
-          name: Run PocketMine-MP in the background
-          command: |
-            cd server-running-test
-            ./start.sh --no-wizard
-          background: true
-      - run: sleep 5
+            # Setup PocketMine-MP
+            - run: |
+                mkdir server-running-test
+                cd server-running-test
+                curl https://raw.githubusercontent.com/pmmp/php-build-scripts/master/installer.sh | bash
 
-      # Run tests with PHPUnit
-      - run: php vendor/bin/phpunit
+            # Start PocketMine-MP
+            - run:
+                name: Run PocketMine-MP in the background
+                command: |
+                    cd server-running-test
+                    ./start.sh --no-wizard
+                background: true
+            - run: sleep 5
+
+            # Run tests with PHPUnit
+            - run: XDEBUG_MODE=coverage php vendor/bin/phpunit --log-junit test-results/phpunit/junit.xml --coverage-html coverage/coverage-report
+
+            # Save test results
+            - store_test_results:
+                  path: test-results
+
+            # Save coverage report
+            - store_artifacts:
+                  path: coverage/coverage-report
+    phpstan:
+        docker:
+            - image: cimg/php:8.1
+        steps:
+            # Checkout branch
+            - checkout
+
+            # Install Composer dependencies
+            - restore_cache:
+                  key: composer-{{ checksum "composer.json" }}
+            - run: composer install --ignore-platform-reqs
+            - save_cache:
+                  key: composer-{{ checksum "composer.json" }}
+                  paths:
+                      - vendor
+
+            # Create result folder
+            - run: mkdir -p test-results/phpstan-result
+
+            # Run code analysis with PHPStan
+            - run: composer code-analyze-save-report
+
+            # Save code analysis results
+            - store_test_results:
+                  path: test-results
+    phpcs:
+        docker:
+            - image: cimg/php:8.1
+        steps:
+            # Checkout branch
+            - checkout
+
+            # Install Composer dependencies
+            - restore_cache:
+                  key: composer-{{ checksum "composer.json" }}
+            - run: composer install --ignore-platform-reqs
+            - save_cache:
+                  key: composer-{{ checksum "composer.json" }}
+                  paths:
+                      - vendor
+
+            # Create result folder
+            - run: mkdir -p test-results/phpcs-result
+
+            # Run code style check with PHP_CodeSniffer
+            - run: composer check-format-save-report
+
+            # Save code style check results
+            - store_test_results:
+                  path: test-results
+
+workflows:
+    version: 2
+    tests:
+        jobs:
+            - phpunit
+            - phpstan
+            - phpcs

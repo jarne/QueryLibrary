@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueryLibrary | library main class
  */
@@ -37,11 +38,12 @@ class QueryLibrary
                     );
                     $challengeToken = pack("N", $challenge);
 
-                    if (fwrite(
-                        $socket,
-                        "\xFE\xFD\x00\x10\x20\x30\x40" . $challengeToken
-                        . "\xFF\xFF\xFF\x01"
-                    )
+                    if (
+                        fwrite(
+                            $socket,
+                            "\xFE\xFD\x00\x10\x20\x30\x40" . $challengeToken
+                            . "\xFF\xFF\xFF\x01"
+                        )
                     ) {
                         if ($informationResponse = fread($socket, 4096)) {
                             $informationParts = explode(

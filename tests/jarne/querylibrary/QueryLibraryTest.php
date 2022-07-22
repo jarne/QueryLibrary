@@ -1,4 +1,5 @@
 <?php
+
 /**
  * QueryLibrary | library tests
  */
@@ -8,10 +9,15 @@ namespace jarne\querylibrary;
 use jarne\querylibrary\utils\Result;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @coversDefaultClass \jarne\querylibrary\QueryLibrary
+ */
 class QueryLibraryTest extends TestCase
 {
     /**
      * Test if the fetching in general is working
+     *
+     * @covers ::fetch
      */
     public function testFetchingGeneral(): Result
     {
@@ -29,6 +35,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getIp
      */
     public function testIp(Result $fetchedData): void
     {
@@ -41,6 +48,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getPort
      */
     public function testPort(Result $fetchedData): void
     {
@@ -53,6 +61,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getGameType
      */
     public function testGameType(Result $fetchedData): void
     {
@@ -65,6 +74,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getGameId
      */
     public function testGameId(Result $fetchedData): void
     {
@@ -77,6 +87,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getVersion
      */
     public function testVersion(Result $fetchedData): void
     {
@@ -89,6 +100,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getServerEngine
      */
     public function testServerEngine(Result $fetchedData): void
     {
@@ -101,6 +113,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getMotd
      */
     public function testWorld(Result $fetchedData): void
     {
@@ -113,6 +126,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::isWhitelist
      */
     public function testWhitelist(Result $fetchedData): void
     {
@@ -125,6 +139,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getOnlinePlayers
      */
     public function testOnlinePlayers(Result $fetchedData): void
     {
@@ -137,6 +152,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getMaxPlayers
      */
     public function testMaxPlayers(Result $fetchedData): void
     {
@@ -149,6 +165,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getDefaultLevelName
      */
     public function testDefaultLevelName(Result $fetchedData): void
     {
@@ -164,6 +181,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getPlugins
      */
     public function testPlugins(Result $fetchedData): void
     {
@@ -176,6 +194,7 @@ class QueryLibraryTest extends TestCase
      * @param Result $fetchedData
      *
      * @depends testFetchingGeneral
+     * @covers \jarne\querylibrary\utils\Result::getPlayerNames
      */
     public function testPlayerNames(Result $fetchedData): void
     {
